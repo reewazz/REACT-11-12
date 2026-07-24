@@ -7,6 +7,9 @@ import Navbar from "./components/Navbar"
 import Homepage from "./components/Homepage"
 import Footer from "./components/Footer"
 import Hero from "./components/Hero"
+import { CourseDetailPage } from "./components/CourseDetailPage"
+import { ProductsPage } from "./components/Products/ProductsPage"
+import Contact from "./components/contacts/Contact"
 
 function App() {
   // props
@@ -98,11 +101,16 @@ function App() {
   
   <h1>color change</h1> */}
 
-<Navbar/>
+<Navbar name= "riwaj"/>
  
  <Routes>
 
 <Route path="todo" element={ <TodoList/> } />
+<Route path="contacts" element={ <Contact/> } />
+<Route path="products" element = { <ProductsPage/> }/>
+
+<Route path="course" element = {<h1 className="text-center">This is course page</h1>}/>
+<Route path="course/:name" element = {<CourseDetailPage/>}/>
 <Route index element = {<Hero/>} />
 <Route path="*" element = {<h1> Page not found  </h1>}/>
 
