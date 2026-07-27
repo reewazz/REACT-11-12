@@ -15,7 +15,7 @@ function Navbar(){
         <Link to={'/'}>Home</Link>
         <Link to={"/todo"}>Todo</Link>
         <Link href="#">Services</Link>
-        <Link href="#">Products</Link>
+        <Link to={"/products"}>Products</Link>
         <Link href="#">Contacts</Link>
       </div>
     </nav>

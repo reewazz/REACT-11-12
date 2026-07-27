@@ -1,9 +1,4 @@
-import { useEffect, useState } from "react";
-import Navbar from "../Navbar";
-import ProductCard from "./ProductCard";
-
-export const ProductsPage = ()=> {
-    const [products, setProducts] = useState([
+   export const ProductData = [
   {
     id: 1,
     name: "iPhone 15 Pro",
@@ -94,66 +89,4 @@ export const ProductsPage = ()=> {
     stock: 30,
     image: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&q=80",
   },
-]);
-
-const categories = ["All",...new Set ( products.map((item,index)=>item.category))]
-const [category,setCategory] = useState("All")
-
-const user = {
-  name : "manjil",
-  age: 23
-}
-
-
-useEffect(()=>{
-  localStorage.setItem("productList",JSON.stringify(products))
-},[products])
-
-
-
-const finalUserobj = JSON.parse (localStorage.getItem ("userObj"))
-
-const filteredProducts = category ==="All" ? products : products.filter((item,index)=> {
-    return item.category === category
-
-  })
-
-
-
-
-
-const [name,setName] = useState("riwaj")
-const [show,setShow] = useState(false)
-    return (
-        <>
-   
-        {/* <h1 className="text-center">Products</h1> */}
-
-     {show ?    <div className="fixed h-20 bg-green-400">
-          some form for product page
-          <button onClick={()=>setShow(false)}>cancel</button>
-        </div> : ""}
-        <div className="flex ">
-<div className="flex justify-between w-full px-20">
-   <div className="flex gap-4">
-        {categories.map((item,index)=>(
-          <button onClick= {()=>setCategory(item)} className="border border-gray-400 p-4 " key={index}>{item}</button>
-        ))}
-        
- </div>
- <button onClick={()=>setShow(true)}>Add</button>
-</div>
-        </div>
-
-      <div className="grid grid-cols-3 gap-8">
-         {filteredProducts.map((item,index)=>(
-        <ProductCard key={index} item={item}/>
-      
-        ))
-    }
-
-      </div>
-
-        </>
-    )
-}
+];

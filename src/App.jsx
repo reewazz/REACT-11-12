@@ -10,6 +10,7 @@ import Hero from "./components/Hero"
 import { CourseDetailPage } from "./components/CourseDetailPage"
 import { ProductsPage } from "./components/Products/ProductsPage"
 import Contact from "./components/contacts/Contact"
+import ProductDetailPage from "./components/Products/ProductDetailPage"
 
 function App() {
   // props
@@ -111,6 +112,7 @@ function App() {
 
 <Route path="course" element = {<h1 className="text-center">This is course page</h1>}/>
 <Route path="course/:name" element = {<CourseDetailPage/>}/>
+<Route path="products/:id" element = {<ProductDetailPage/>}/>
 <Route index element = {<Hero/>} />
 <Route path="*" element = {<h1> Page not found  </h1>}/>
 
