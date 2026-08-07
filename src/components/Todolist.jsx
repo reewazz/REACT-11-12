@@ -42,12 +42,15 @@ else{
     console.log(idToDelete)
     
     const updatedTodo = todo.filter((item,index)=>{
-        return item.id !==idToDelete
+        return item.id !== idToDelete
     })
     setTodo(updatedTodo)
 
   }
 // [1,2,3,4,5,6]
+
+
+
 
 // const task = {
 //   task:1,

@@ -118,12 +118,10 @@ const filteredProducts = category ==="All" ? products : products.filter((item,in
 
   })
 
-
-
-
-
 const [name,setName] = useState("riwaj")
 const [show,setShow] = useState(false)
+
+
     return (
         <>
    
@@ -137,7 +135,7 @@ const [show,setShow] = useState(false)
 <div className="flex justify-between w-full px-20">
    <div className="flex gap-4">
         {categories.map((item,index)=>(
-          <button onClick= {()=>setCategory(item)} className="border border-gray-400 p-4 " key={index}>{item}</button>
+          <button onClick= {()=>setCategory(item)} className= { `border border-gray-400 p-4 ${item===category?" bg-blue-400" : "" }`   } key={index}>{item}</button>
         ))}
         
  </div>

@@ -11,6 +11,9 @@ import { CourseDetailPage } from "./components/CourseDetailPage"
 import { ProductsPage } from "./components/Products/ProductsPage"
 import Contact from "./components/contacts/Contact"
 import ProductDetailPage from "./components/Products/ProductDetailPage"
+import NewsList from "./components/news/NewsList"
+import ApiProductList from "./components/APIProducts/ApiProductList"
+import BlogsList from "./components/Blogs/BlogsList"
 
 function App() {
   // props
@@ -113,7 +116,10 @@ function App() {
 <Route path="course" element = {<h1 className="text-center">This is course page</h1>}/>
 <Route path="course/:name" element = {<CourseDetailPage/>}/>
 <Route path="products/:id" element = {<ProductDetailPage/>}/>
+<Route path="news" element = {<NewsList/>}/>
 <Route index element = {<Hero/>} />
+<Route path="api-products" element = {<ApiProductList/>} />
+<Route path="blogs" element = {<BlogsList/>} />
 <Route path="*" element = {<h1> Page not found  </h1>}/>
 
 </Routes>
