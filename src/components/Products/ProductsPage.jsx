@@ -145,7 +145,7 @@ const [show,setShow] = useState(false)
 
       <div className="grid grid-cols-3 gap-8">
          {filteredProducts.map((item,index)=>(
-        <ProductCard key={index} item={item}/>
+        <ProductCard  key={index} item={item}/>
       
         ))
     }

@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import someimage from "./assets/someimage.jpg"
 import TodoList from "./components/Todolist"
 import { Route, Routes } from "react-router-dom"
@@ -14,6 +14,10 @@ import ProductDetailPage from "./components/Products/ProductDetailPage"
 import NewsList from "./components/news/NewsList"
 import ApiProductList from "./components/APIProducts/ApiProductList"
 import BlogsList from "./components/Blogs/BlogsList"
+import Signup from "./components/login/Signup"
+import Dashboard from "./components/Dashboard/Dashboard"
+import CounterContext from "./components/contexts/CounterContext"
+import PropsType from "./components/Dashboard/PropsType"
 
 function App() {
   // props
@@ -33,7 +37,11 @@ function App() {
 
 
 //  const sum  =  ()=> setAge(age+10)
-  const [count,setCount] = useState(0)
+  // const [count,setCount] = useState(0)
+
+
+const {count,setCount} = useContext(CounterContext)
+
   const [show,setShow] = useState (true)
  
   
@@ -105,13 +113,25 @@ function App() {
   
   <h1>color change</h1> */}
 
-<Navbar name= "riwaj"/>
+<div className="flex justify-center">
+  <button onClick={()=>setCount(count-1)}>-</button>
+<h1>{count}</h1>
+<button onClick={()=>setCount(count+1)}>+</button>
+</div>
+
+
+<Navbar  name= "riwaj"/>
+
+
  
  <Routes>
 
 <Route path="todo" element={ <TodoList/> } />
 <Route path="contacts" element={ <Contact/> } />
-<Route path="products" element = { <ProductsPage/> }/>
+<Route path="products" element = { <ProductsPage  /> }/>
+<Route path="props" element = { <PropsType >   </PropsType> }/>
+
+
 
 <Route path="course" element = {<h1 className="text-center">This is course page</h1>}/>
 <Route path="course/:name" element = {<CourseDetailPage/>}/>
@@ -120,6 +140,8 @@ function App() {
 <Route index element = {<Hero/>} />
 <Route path="api-products" element = {<ApiProductList/>} />
 <Route path="blogs" element = {<BlogsList/>} />
+<Route path="signup" element = {<Signup/>} />
+<Route path="dashboard" element = {<Dashboard/>} />
 <Route path="*" element = {<h1> Page not found  </h1>}/>
 
 </Routes>
