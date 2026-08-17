@@ -2,7 +2,7 @@
 import { useContext, useState } from "react"
 import someimage from "./assets/someimage.jpg"
 import TodoList from "./components/Todolist"
-import { Route, Routes } from "react-router-dom"
+import { Outlet, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Homepage from "./components/Homepage"
 import Footer from "./components/Footer"
@@ -18,6 +18,10 @@ import Signup from "./components/login/Signup"
 import Dashboard from "./components/Dashboard/Dashboard"
 import CounterContext from "./components/contexts/CounterContext"
 import PropsType from "./components/Dashboard/PropsType"
+import PrivateRoutes from "./components/PrivateRoutes"
+import AddBlog from "./components/Dashboard/AddBlog"
+import Dashboardlayout from "./components/layouts/Dashboardlayout"
+import Applayout from "./components/layouts/Applayout"
 
 function App() {
   // props
@@ -113,26 +117,20 @@ const {count,setCount} = useContext(CounterContext)
   
   <h1>color change</h1> */}
 
-<div className="flex justify-center">
-  <button onClick={()=>setCount(count-1)}>-</button>
-<h1>{count}</h1>
-<button onClick={()=>setCount(count+1)}>+</button>
-</div>
 
 
-<Navbar  name= "riwaj"/>
+
 
 
  
  <Routes>
 
-<Route path="todo" element={ <TodoList/> } />
+
+<Route path = "/" element ={ <Applayout/>}>
+<Route path="todo" element={<TodoList/> } />
 <Route path="contacts" element={ <Contact/> } />
 <Route path="products" element = { <ProductsPage  /> }/>
-<Route path="props" element = { <PropsType >   </PropsType> }/>
-
-
-
+<Route path="props" element = { <PropsType > <TodoList/>  </PropsType> }/>
 <Route path="course" element = {<h1 className="text-center">This is course page</h1>}/>
 <Route path="course/:name" element = {<CourseDetailPage/>}/>
 <Route path="products/:id" element = {<ProductDetailPage/>}/>
@@ -141,11 +139,18 @@ const {count,setCount} = useContext(CounterContext)
 <Route path="api-products" element = {<ApiProductList/>} />
 <Route path="blogs" element = {<BlogsList/>} />
 <Route path="signup" element = {<Signup/>} />
-<Route path="dashboard" element = {<Dashboard/>} />
+</Route>
 <Route path="*" element = {<h1> Page not found  </h1>}/>
 
+
+<Route path="admin" element = {<PrivateRoutes><Dashboardlayout/> </PrivateRoutes>}>
+<Route path="blog" element = {<AddBlog/>}/>
+<Route path="product" element = {<h1>dashboard product  </h1>}/>
+<Route index element = {<Dashboard/>} />
+
+</Route>
+
 </Routes>
-<Footer/>
 
 
 

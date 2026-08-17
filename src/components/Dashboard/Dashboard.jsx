@@ -1,15 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
+import AuthContext from '../contexts/AuthContext'
 
-const Dashboard = () => {
-
-    const token = localStorage.getItem("token")
-
-
-    if(!token) {
-        return <Navigate  to={"/signup"} />
-    }
-
+const Dashboard = () => {    
   return (
     <div>This is dashboard page it needs login to access</div>
   )
