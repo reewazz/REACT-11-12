@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { GetRequest, PostRequest } from '../http'
+import ApiImage from '../common/ApiImage'
 
 const BlogsList = () => {
 
@@ -24,6 +25,9 @@ const [title, setTitle] = useState("");
 const [description, setDescription] = useState("");
 const [category, setCategory] = useState("");
 const [author, setAuthor] = useState("");
+const [file,setFile] = useState([])
+
+console.log(file,"from input")
 
 const [categoryList,setCategoryList] = useState([])
 
@@ -58,10 +62,25 @@ const handleSubmit = async ()=> {
     likes: 20000,
     status: true,
     author: author,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Y0gi55HZHJ_9Tqz9Za1lSjwwoYuNknsLv6snN2eO7w&s=10",
+    image: file
   }
+
+  const blogForm = new FormData()
+  blogForm.append("title",title)
+  blogForm.append("description",description)
+  blogForm.append("category",category)
+  blogForm.append("likes",1000)
+  blogForm.append("status",true)
+  blogForm.append("author",author)
+
+  file.forEach((item) => {
+  blogForm.append("photos", item);
+});
+  // blogForm.append("photos[0]",file[0])
+  // blogForm.append("photos[1]",file[1])
+
   // const response  = await axios.post("http://localhost:5000/blog/create",body)
-  const response  = await PostRequest("blog/create",blogpayload)
+  const response  = await PostRequest("blog/create",blogForm)
   console.log(response)
 
 
@@ -88,12 +107,10 @@ console.log(blogs,"blogs")
           >
             {/* Image */}
             {item.image && (
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-52 object-cover"
-              />
+             <ApiImage url={item.image[0]}/>
             )}
+
+
 
             {/* Card Content */}
             <div className="p-5">
@@ -212,9 +229,13 @@ console.log(blogs,"blogs")
       Image URL
     </label>
     <input
-      type="url"
+      type="file"
       id="image"
       name="image"
+      multiple
+      onChange={(e)=>{
+    setFile(Array.from(e.target.files)); 
+      }}
       placeholder="https://example.com/image.jpg"
       class="w-full px-4 py-2 border border-gray-300 rounded-lg
              focus:ring-2 focus:ring-blue-500 focus:border-blue-500

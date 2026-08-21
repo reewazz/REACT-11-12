@@ -22,6 +22,7 @@ import PrivateRoutes from "./components/PrivateRoutes"
 import AddBlog from "./components/Dashboard/AddBlog"
 import Dashboardlayout from "./components/layouts/Dashboardlayout"
 import Applayout from "./components/layouts/Applayout"
+import MantineUi from "./components/Mantine/MantineUi"
 
 function App() {
   // props
@@ -139,6 +140,7 @@ const {count,setCount} = useContext(CounterContext)
 <Route path="api-products" element = {<ApiProductList/>} />
 <Route path="blogs" element = {<BlogsList/>} />
 <Route path="signup" element = {<Signup/>} />
+<Route path="mantine" element = {<MantineUi/>}/>
 </Route>
 <Route path="*" element = {<h1> Page not found  </h1>}/>
 
